@@ -1,8 +1,7 @@
-package com.github.kimkevin.android;
+package com.kimkevin.android;
 
 import java.util.ArrayList;
 import java.util.List;
-
 
 /**
  * HangulToJasoParser is to seperate Hangul to basic consonant and vowel by using Unicode

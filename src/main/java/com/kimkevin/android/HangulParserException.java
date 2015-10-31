@@ -1,7 +1,7 @@
-package com.github.kimkevin.android;
+package com.kimkevin.android;
+
 
 public class HangulParserException extends Exception{
-
     public HangulParserException() {
         super();
     }
