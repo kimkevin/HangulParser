@@ -14,14 +14,14 @@ import java.util.List;
  * ref : Hangul Syllables http://www.unicode.org/charts/PDF/UAC00.pdf
  */
 
-public class HangulToJasoParser {
-    private static final String TAG = HangulToJasoParser.class.getSimpleName();
-    private static HangulToJasoParser instance;
+public class HangulParser {
+    private static final String TAG = HangulParser.class.getSimpleName();
+    private static HangulParser instance;
 
-    public static HangulToJasoParser getInstance() {
+    public static HangulParser getInstance() {
         if (instance == null) {
-            synchronized (HangulToJasoParser.class) {
-                instance = new HangulToJasoParser();
+            synchronized (HangulParser.class) {
+                instance = new HangulParser();
 
                 JUNGSUNG_COUNT = JUNGSUNG_LIST.length;
                 JONGSUNG_COUNT = JONGSUNG_LIST.length;
@@ -57,11 +57,13 @@ public class HangulToJasoParser {
             'ㅆ', 'ㅇ', 'ㅈ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅍ', 'ㅎ'
     };
 
-    public List<String> disassemble(String hangul) throws HangulParserException {
+    public List<String> disassemble(char hangul) throws HangulParserException {
         List<String> jasoList = new ArrayList<>();
 
-        if (hangul.matches(".*[가-힣]+.*")) {
-            int baseCode = hangul.charAt(0) - FIRST_HANGUL;
+        String hangulStr = String.valueOf(hangul);
+
+        if (hangulStr.matches(".*[가-힣]+.*")) {
+            int baseCode = hangulStr.charAt(0) - FIRST_HANGUL;
 
             final int chosungIndex = baseCode / (JONGSUNG_COUNT * JUNGSUNG_COUNT);
             jasoList.add(Character.toString(CHOSUNG_LIST[chosungIndex]));
@@ -73,9 +75,9 @@ public class HangulToJasoParser {
             if (jongsungIndex > 1) {
                 jasoList.add(Character.toString(JONGSUNG_LIST[jongsungIndex]));
             }
-        } else if (hangul.matches(".*[ㄱ-ㅎ]+.*")) {
+        } else if (hangulStr.matches(".*[ㄱ-ㅎ]+.*")) {
             throw new HangulParserException("It is Korean consonant");
-        } else if (hangul.matches(".*[ㅏ-ㅣ]+.*")) {
+        } else if (hangulStr.matches(".*[ㅏ-ㅣ]+.*")) {
             throw new HangulParserException("It is Korean vowel");
         } else {
             throw new HangulParserException("It is not Hangul");
