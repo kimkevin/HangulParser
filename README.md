@@ -1,5 +1,5 @@
-# HangulToJasoParser
-[Java & Android] HangulToJasoParser is to seperate Hangul to basic consonant and vowel by using Unicode
+# HangulParser
+[Java & Android] HangulToJasoParser is to seperate Hangul to basic consonant and vowel by using Unicode and also to convert  basic consonant and vowel to hangul.
 
 # Usage
 
