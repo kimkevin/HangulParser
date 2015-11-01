@@ -57,7 +57,7 @@ public class HangulToJasoParser {
             'ㅆ', 'ㅇ', 'ㅈ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅍ', 'ㅎ'
     };
 
-    public List<String> parse(String hangul) throws HangulParserException {
+    public List<String> disassemble(String hangul) throws HangulParserException {
         List<String> jasoList = new ArrayList<>();
 
         if (hangul.matches(".*[가-힣]+.*")) {
@@ -82,5 +82,28 @@ public class HangulToJasoParser {
         }
 
         return jasoList;
+    }
+
+    public String assemble(List<String> jasoList) {
+        int unicode = FIRST_HANGUL;
+
+        if (jasoList.size() > 0) {
+            final int chosungIndex = new String(CHOSUNG_LIST).indexOf(jasoList.get(0));
+            unicode += JONGSUNG_COUNT * JUNGSUNG_COUNT * chosungIndex;
+
+            if (jasoList.size() > 1) {
+                final int jungsungIndex = new String(JUNGSUNG_LIST).indexOf(jasoList.get(1));
+                unicode += JONGSUNG_COUNT * jungsungIndex;
+
+                if (jasoList.size() > 2) {
+                    final int jongsungIndex = new String(JONGSUNG_LIST).indexOf(jasoList.get(2));
+                    unicode += jongsungIndex;
+                }
+            }
+
+            return Character.toString((char) unicode);
+        } else {
+            return null;
+        }
     }
 }
