@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * HangulToJasoParser is to seperate Hangul to basic consonant and vowel by using Unicode
+ * HangulParser is to seperate Hangul to basic consonant and vowel by using Unicode
  *
  *
  * Created by KimKevin.
