@@ -76,9 +76,9 @@ public class HangulParser {
                 jasoList.add(Character.toString(JONGSUNG_LIST[jongsungIndex]));
             }
         } else if (hangulStr.matches(".*[ㄱ-ㅎ]+.*")) {
-            throw new HangulParserException("It is Korean consonant");
+            throw new HangulParserException("It is Hangul consonant");
         } else if (hangulStr.matches(".*[ㅏ-ㅣ]+.*")) {
-            throw new HangulParserException("It is Korean vowel");
+            throw new HangulParserException("It is Hangul vowel");
         } else {
             throw new HangulParserException("It is not Hangul");
         }
