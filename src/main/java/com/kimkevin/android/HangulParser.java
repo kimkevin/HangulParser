@@ -92,20 +92,29 @@ public class HangulParser {
         if (jasoList.size() > 0) {
             final int chosungIndex = new String(CHOSUNG_LIST).indexOf(jasoList.get(0));
 
-            if(chosungIndex >= 0) unicode += JONGSUNG_COUNT * JUNGSUNG_COUNT * chosungIndex;
-            else throw new HangulParserException("First string is not in Hangul Chosung");
+            if(chosungIndex >= 0) {
+                unicode += JONGSUNG_COUNT * JUNGSUNG_COUNT * chosungIndex;
+            } else {
+                throw new HangulParserException("First string is not in Hangul Chosung");
+            }
 
             if (jasoList.size() > 1) {
                 final int jungsungIndex = new String(JUNGSUNG_LIST).indexOf(jasoList.get(1));
 
-                if(jungsungIndex >= 0) unicode += JONGSUNG_COUNT * jungsungIndex;
-                else throw new HangulParserException("Second string is not in Hangul Jungsung");
+                if(jungsungIndex >= 0) {
+                    unicode += JONGSUNG_COUNT * jungsungIndex;
+                } else {
+                    throw new HangulParserException("Second string is not in Hangul Jungsung");
+                }
 
                 if (jasoList.size() > 2) {
                     final int jongsungIndex = new String(JONGSUNG_LIST).indexOf(jasoList.get(2));
 
-                    if(jongsungIndex >= 0) unicode += jongsungIndex;
-                    else throw new HangulParserException("Third string is not in Hangul Jongsung");
+                    if(jongsungIndex >= 0) {
+                        unicode += jongsungIndex;
+                    } else {
+                        throw new HangulParserException("Third string is not in Hangul Jongsung");
+                    }
                 }
             }
 
