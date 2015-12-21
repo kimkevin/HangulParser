@@ -86,20 +86,26 @@ public class HangulParser {
         return jasoList;
     }
 
-    public String assemble(List<String> jasoList) {
+    public String assemble(List<String> jasoList) throws HangulParserException {
         int unicode = FIRST_HANGUL;
 
         if (jasoList.size() > 0) {
             final int chosungIndex = new String(CHOSUNG_LIST).indexOf(jasoList.get(0));
-            unicode += JONGSUNG_COUNT * JUNGSUNG_COUNT * chosungIndex;
+
+            if(chosungIndex >= 0) unicode += JONGSUNG_COUNT * JUNGSUNG_COUNT * chosungIndex;
+            else throw new HangulParserException("First string is not in Hangul Chosung");
 
             if (jasoList.size() > 1) {
                 final int jungsungIndex = new String(JUNGSUNG_LIST).indexOf(jasoList.get(1));
-                unicode += JONGSUNG_COUNT * jungsungIndex;
+
+                if(jungsungIndex >= 0) unicode += JONGSUNG_COUNT * jungsungIndex;
+                else throw new HangulParserException("Second string is not in Hangul Jungsung");
 
                 if (jasoList.size() > 2) {
                     final int jongsungIndex = new String(JONGSUNG_LIST).indexOf(jasoList.get(2));
-                    unicode += jongsungIndex;
+
+                    if(jongsungIndex >= 0) unicode += jongsungIndex;
+                    else throw new HangulParserException("Third string is not in Hangul Jongsung");
                 }
             }
 
