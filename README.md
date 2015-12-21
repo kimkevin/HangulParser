@@ -23,8 +23,11 @@
   jasoList.add("ㅂ");
   jasoList.add("ㅣ");
   jasoList.add("ㄴ");
-
+    try{
   String hangul = HangulToJasoParser.getInstance().assemble(jasoList);
+  } catch (HangulParserException e) {
+    e.printStackTrace();
+  }
   
   > 빈
 ```
