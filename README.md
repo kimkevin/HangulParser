@@ -42,4 +42,5 @@ All contributions are welcome. Open a [Pull Requests](https://github.com/kimkevi
 the [Issues](https://github.com/kimkevin/HangulToJasoParser/issues) section.
 
 # License
-MIT
+Copyright (c) 2013 "KimKevin" Yongjun Kim
+Licensed under the MIT license.
