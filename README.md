@@ -43,4 +43,5 @@ the [Issues](https://github.com/kimkevin/HangulToJasoParser/issues) section.
 
 # License
 Copyright (c) 2013 "KimKevin" Yongjun Kim
+
 Licensed under the MIT license.
