@@ -5,7 +5,7 @@
 
 # Usage
 
-**1. 자소 분리 (Disassemble)**
+**1. 자소 분리(Disassemble)**
 
 ```java
   String hangul = "한글";
@@ -20,7 +20,7 @@
   > [ㅎ, ㅏ, ㄴ, ㄱ, ㅡ, ㄹ]
 ```
 
-**2. 자소 결합 (assemble)**
+**2. 자소 결합(assemble)**
 ```java
   jasoList.add("ㅎ");
   jasoList.add("ㅏ");
