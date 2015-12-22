@@ -86,6 +86,20 @@ public class HangulParser {
         return jasoList;
     }
 
+    public List<String> disassemble(String hangul) throws HangulParserException {
+        List<String> jasoList = new ArrayList<>();
+
+        for (int i = 0, li = hangul.length(); i < li; i++) {
+            try {
+                jasoList.addAll(disassemble(hangul.charAt(i)));
+            } catch (HangulParserException e) {
+                throw new HangulParserException((i+1) + "번째 글자 분리 오류 : " + e.getMessage());
+            }
+        }
+
+        return jasoList;
+    }
+
     public String assemble(List<String> jasoList) throws HangulParserException {
         int unicode = FIRST_HANGUL;
 
