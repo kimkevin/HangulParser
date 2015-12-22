@@ -76,11 +76,11 @@ public class HangulParser {
                 jasoList.add(Character.toString(JONGSUNG_LIST[jongsungIndex]));
             }
         } else if (hangulStr.matches(".*[ㄱ-ㅎ]+.*")) {
-            throw new HangulParserException("It is Hangul consonant");
+            throw new HangulParserException("음절이 아닌 자음입니다");
         } else if (hangulStr.matches(".*[ㅏ-ㅣ]+.*")) {
-            throw new HangulParserException("It is Hangul vowel");
+            throw new HangulParserException("음절이 아닌 모음입니다");
         } else {
-            throw new HangulParserException("It is not Hangul");
+            throw new HangulParserException("한글이 아닙니다");
         }
 
         return jasoList;
@@ -95,7 +95,7 @@ public class HangulParser {
             if(chosungIndex >= 0) {
                 unicode += JONGSUNG_COUNT * JUNGSUNG_COUNT * chosungIndex;
             } else {
-                throw new HangulParserException("First string is not in Hangul Chosung");
+                throw new HangulParserException("첫 번째 자소가 한글 초성이 아닙니다");
             }
 
             if (jasoList.size() > 1) {
@@ -104,7 +104,7 @@ public class HangulParser {
                 if(jungsungIndex >= 0) {
                     unicode += JONGSUNG_COUNT * jungsungIndex;
                 } else {
-                    throw new HangulParserException("Second string is not in Hangul Jungsung");
+                    throw new HangulParserException("두 번째 자소가 한글 중성이 아닙니다");
                 }
 
                 if (jasoList.size() > 2) {
@@ -113,14 +113,14 @@ public class HangulParser {
                     if(jongsungIndex >= 0) {
                         unicode += jongsungIndex;
                     } else {
-                        throw new HangulParserException("Third string is not in Hangul Jongsung");
+                        throw new HangulParserException("세 번째 자소가 한글 종성이 아닙니다");
                     }
                 }
             }
 
             return Character.toString((char) unicode);
         } else {
-            return null;
+            throw new HangulParserException("자소가 없습니다");
         }
     }
 }
