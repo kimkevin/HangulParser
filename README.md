@@ -25,7 +25,7 @@
   jasoList.add("ㅎ");
   jasoList.add("ㅏ");
   jasoList.add("ㄴ");
-  try{
+  try {
     String hangul = HangulToJasoParser.getInstance().assemble(jasoList);
   } catch (HangulParserException e) {
     e.printStackTrace();
