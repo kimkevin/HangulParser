@@ -5,10 +5,10 @@
 
 # Usage
 
-**1. 자소 분리(Disassemble)**
+**1. 자소 분리 (Disassemble)**
 
 ```java
-  String hangul = "케빈";
+  String hangul = "한글";
   for (int i = 0, li = hangul.length(); i < li; i++) {
     try {
       jasoList.addAll(HangulToJasoParser.getInstance().disassemble(hangul.charAt(i)));
@@ -17,13 +17,13 @@
     }
   }
   
-  > [ㅋ, ㅔ, ㅂ, ㅣ, ㄴ]
+  > [ㅎ, ㅏ, ㄴ, ㄱ, ㅡ, ㄹ]
 ```
 
-**2. 자소 결합(assemble)**
+**2. 자소 결합 (assemble)**
 ```java
-  jasoList.add("ㅂ");
-  jasoList.add("ㅣ");
+  jasoList.add("ㅎ");
+  jasoList.add("ㅏ");
   jasoList.add("ㄴ");
   try{
     String hangul = HangulToJasoParser.getInstance().assemble(jasoList);
@@ -31,7 +31,7 @@
     e.printStackTrace();
   }
   
-  > 빈
+  > 한
 ```
 
 # Developed By
