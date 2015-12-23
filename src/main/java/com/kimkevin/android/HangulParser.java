@@ -137,4 +137,78 @@ public class HangulParser {
             throw new HangulParserException("자소가 없습니다");
         }
     }
+
+    public String assemble2(List<String> jasoList) throws HangulParserException {
+        if (jasoList.size() > 0) {
+            String result = "";
+            int startIdx = 0;
+
+            while (true) {
+                if(startIdx < jasoList.size()) {
+                    final int assembleSize = getNextAssembleSize(jasoList, startIdx);
+                    result += assemble2(jasoList, startIdx, assembleSize);
+                    startIdx += assembleSize;
+                } else {
+                    break;
+                }
+            }
+
+            return result;
+        } else {
+            throw new HangulParserException("자소가 없습니다");
+        }
+    }
+
+    private String assemble2(List<String> jasoList, final int startIdx, final int assembleSize) throws HangulParserException {
+        int unicode = FIRST_HANGUL;
+
+        final int chosungIndex = new String(CHOSUNG_LIST).indexOf(jasoList.get(startIdx));
+
+        if(chosungIndex >= 0) {
+            unicode += JONGSUNG_COUNT * JUNGSUNG_COUNT * chosungIndex;
+        } else {
+            throw new HangulParserException((startIdx + 1) + "번째 자소가 한글 초성이 아닙니다");
+        }
+
+        final int jungsungIndex = new String(JUNGSUNG_LIST).indexOf(jasoList.get(startIdx + 1));
+
+        if(jungsungIndex >= 0) {
+            unicode += JONGSUNG_COUNT * jungsungIndex;
+        } else {
+            throw new HangulParserException((startIdx + 2) + "번째 자소가 한글 중성이 아닙니다");
+        }
+
+        if (assembleSize > 2) {
+            final int jongsungIndex = new String(JONGSUNG_LIST).indexOf(jasoList.get(startIdx + 2));
+
+            if(jongsungIndex >= 0) {
+                unicode += jongsungIndex;
+            } else {
+                throw new HangulParserException((startIdx + 3) + "번째 자소가 한글 종성이 아닙니다");
+            }
+        }
+
+        return Character.toString((char) unicode);
+    }
+
+    private int getNextAssembleSize(List<String> jasoList, final int startIdx) throws HangulParserException{
+        final int remainJasoLength = jasoList.size() - startIdx;
+        final int assembleSize;
+
+        if(remainJasoLength > 3) {
+            if(new String(JUNGSUNG_LIST).contains(jasoList.get(startIdx + 3))) {
+                assembleSize = 2;
+            } else {
+                assembleSize = 3;
+            }
+        } else if(remainJasoLength == 3 || remainJasoLength == 2) {
+            assembleSize = remainJasoLength;
+        } else {
+            throw new HangulParserException("한글을 구성할 자소가 부족하거나 한글이 아닌 문자가 있습니다");
+        }
+
+        return assembleSize;
+    }
+
+
 }
