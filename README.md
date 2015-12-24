@@ -20,6 +20,17 @@
   > [ㅎ, ㅏ, ㄴ, ㄱ, ㅡ, ㄹ]
 ```
 
+```java
+  String hangul = "한글";
+  try {
+    HangulToJasoParser.getInstance().disassemble(hangul);
+  } catch (HangulParserException e) {
+    e.printStackTrace();
+  }
+
+  > [ㅎ, ㅏ, ㄴ, ㄱ, ㅡ, ㄹ]
+```
+
 **2. 자소 결합(assemble)**
 ```java
   jasoList.add("ㅎ");
