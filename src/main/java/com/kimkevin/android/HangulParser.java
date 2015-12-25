@@ -58,7 +58,7 @@ public class HangulParser {
     };
 
     public List<String> disassemble(char hangul) throws HangulParserException {
-        List<String> jasoList = new ArrayList<>();
+        List<String> jasoList = new ArrayList<String>();
 
         String hangulStr = String.valueOf(hangul);
 
@@ -87,7 +87,7 @@ public class HangulParser {
     }
 
     public List<String> disassemble(String hangul) throws HangulParserException {
-        List<String> jasoList = new ArrayList<>();
+        List<String> jasoList = new ArrayList<String>();
 
         for (int i = 0, li = hangul.length(); i < li; i++) {
             try {
