@@ -33,13 +33,16 @@
   jasoList.add("ㅎ");
   jasoList.add("ㅏ");
   jasoList.add("ㄴ");
+  jasoList.add("ㄱ");
+  jasoList.add("ㅡ");
+  jasoList.add("ㄹ");
   try {
     String hangul = HangulToJasoParser.getInstance().assemble(jasoList);
   } catch (HangulParserException e) {
     e.printStackTrace();
   }
   
-  > 한
+  > 한글
 ```
 
 ## Settings

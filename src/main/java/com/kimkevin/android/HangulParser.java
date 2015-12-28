@@ -101,44 +101,6 @@ public class HangulParser {
     }
 
     public String assemble(List<String> jasoList) throws HangulParserException {
-        int unicode = FIRST_HANGUL;
-
-        if (jasoList.size() > 0) {
-            final int chosungIndex = new String(CHOSUNG_LIST).indexOf(jasoList.get(0));
-
-            if(chosungIndex >= 0) {
-                unicode += JONGSUNG_COUNT * JUNGSUNG_COUNT * chosungIndex;
-            } else {
-                throw new HangulParserException("첫 번째 자소가 한글 초성이 아닙니다");
-            }
-
-            if (jasoList.size() > 1) {
-                final int jungsungIndex = new String(JUNGSUNG_LIST).indexOf(jasoList.get(1));
-
-                if(jungsungIndex >= 0) {
-                    unicode += JONGSUNG_COUNT * jungsungIndex;
-                } else {
-                    throw new HangulParserException("두 번째 자소가 한글 중성이 아닙니다");
-                }
-
-                if (jasoList.size() > 2) {
-                    final int jongsungIndex = new String(JONGSUNG_LIST).indexOf(jasoList.get(2));
-
-                    if(jongsungIndex >= 0) {
-                        unicode += jongsungIndex;
-                    } else {
-                        throw new HangulParserException("세 번째 자소가 한글 종성이 아닙니다");
-                    }
-                }
-            }
-
-            return Character.toString((char) unicode);
-        } else {
-            throw new HangulParserException("자소가 없습니다");
-        }
-    }
-
-    public String assemble2(List<String> jasoList) throws HangulParserException {
         if (jasoList.size() > 0) {
             String result = "";
             int startIdx = 0;
@@ -146,7 +108,7 @@ public class HangulParser {
             while (true) {
                 if(startIdx < jasoList.size()) {
                     final int assembleSize = getNextAssembleSize(jasoList, startIdx);
-                    result += assemble2(jasoList, startIdx, assembleSize);
+                    result += assemble(jasoList, startIdx, assembleSize);
                     startIdx += assembleSize;
                 } else {
                     break;
@@ -159,7 +121,7 @@ public class HangulParser {
         }
     }
 
-    private String assemble2(List<String> jasoList, final int startIdx, final int assembleSize) throws HangulParserException {
+    private String assemble(List<String> jasoList, final int startIdx, final int assembleSize) throws HangulParserException {
         int unicode = FIRST_HANGUL;
 
         final int chosungIndex = new String(CHOSUNG_LIST).indexOf(jasoList.get(startIdx));
