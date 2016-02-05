@@ -1,7 +1,7 @@
 ## HangulParser
-[자바 & 안드로이드] HangulToJasoParser는 한 글자를 자소(자음과 모음)로 분리하고 자음과 모음을 하나의 글자로 만들 수 있는 그래들 라이브러리입니다.
+[자바 & 안드로이드] `HangulToJasoParser`는 한 글자를 자소(자음과 모음)로 분리하고 자음과 모음을 하나의 글자로 만들 수 있는 그래들 라이브러리입니다.
 
-[Java & Android] HangulToJasoParser is to seperate Hangul to basic consonant and vowel by using Unicode and also to convert basic consonant and vowel to hangul.
+[Java & Android] `HangulToJasoParser` is to seperate hangul to basic consonant and vowel by using unicode and also to convert basic consonant and vowel to hangul.
 
 ## Usage
 
@@ -51,7 +51,6 @@
 프로젝트안의 라이브러리에 라이브러리 추가(클론)하기
 
 build.gradle
- 
 ```groovy
   compile project(':your_library_folder:HangulParser')
 ```
