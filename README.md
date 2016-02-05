@@ -18,9 +18,8 @@
 ```
 
 ```java
-  String hangul = "한글";
   try {
-    jasoList = HangulToJasoParser.getInstance().disassemble(hangul);
+    jasoList = HangulToJasoParser.getInstance().disassemble("한글");
   } catch (HangulParserException e) {
     e.printStackTrace();
   }
