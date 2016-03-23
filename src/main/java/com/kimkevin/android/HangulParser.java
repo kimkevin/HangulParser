@@ -72,7 +72,7 @@ public class HangulParser {
             jasoList.add(Character.toString(JUNGSUNG_LIST[jungsungIndex]));
 
             final int jongsungIndex = (baseCode - ((JONGSUNG_COUNT * JUNGSUNG_COUNT) * chosungIndex) - (JONGSUNG_COUNT * jungsungIndex));
-            if (jongsungIndex > 1) {
+            if (jongsungIndex > 0) {
                 jasoList.add(Character.toString(JONGSUNG_LIST[jongsungIndex]));
             }
         } else if (hangulStr.matches(".*[ㄱ-ㅎ]+.*")) {
