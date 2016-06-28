@@ -7,8 +7,9 @@
 
 **1. 자소 분리(Disassemble)**
 
+> public List\<String\> disassemble(char hangul)
+
 ```java 
-// public List<String> disassemble(char hangul)
   try {
     jasoList = HangulParser.getInstance().disassemble('한');
   } catch (HangulParserException e) {
@@ -18,8 +19,9 @@
   > [ㅎ, ㅏ, ㄴ]
 ```
 
+> public List\<String\> disassemble(String hangul)
+
 ```java
-// public List<String> disassemble(String hangul)
   try {
     jasoList = HangulParser.getInstance().disassemble("한글");
   } catch (HangulParserException e) {
@@ -30,8 +32,9 @@
 ```
 
 **2. 자소 결합(assemble)**
+> public String assemble(List\<String\> jasoList)
+
 ```java
-// public String assemble(List<String> jasoList)
   jasoList.add("ㅎ");
   jasoList.add("ㅏ");
   jasoList.add("ㄴ");
