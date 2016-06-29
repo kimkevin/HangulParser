@@ -1,5 +1,5 @@
 ## HangulParser
-[자바 & 안드로이드] `HangulParser`는 한 글자를 자소(자음과 모음)로 분리하고 자음과 모음을 하나의 글자로 만들 수 있는 그래들 라이브러리입니다.
+[자바 & 안드로이드] `HangulParser`는 한 글자를 자소(자음과 모음)로 분리하고 자음과 모음을 하나의 글자로 만들 수 있는 `Gradle` 라이브러리입니다.
 
 [Java & Android] `HangulParser` is to seperate hangul to basic consonant and vowel by using unicode and also to convert basic consonant and vowel to hangul.
 
