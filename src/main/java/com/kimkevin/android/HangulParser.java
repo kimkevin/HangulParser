@@ -126,7 +126,7 @@ public class HangulParser {
 
         final int chosungIndex = new String(CHOSUNG_LIST).indexOf(jasoList.get(startIdx));
 
-        if(chosungIndex >= 0) {
+        if (chosungIndex >= 0) {
             unicode += JONGSUNG_COUNT * JUNGSUNG_COUNT * chosungIndex;
         } else {
             throw new HangulParserException((startIdx + 1) + "번째 자소가 한글 초성이 아닙니다");
@@ -143,7 +143,7 @@ public class HangulParser {
         if (assembleSize > 2) {
             final int jongsungIndex = new String(JONGSUNG_LIST).indexOf(jasoList.get(startIdx + 2));
 
-            if(jongsungIndex >= 0) {
+            if (jongsungIndex >= 0) {
                 unicode += jongsungIndex;
             } else {
                 throw new HangulParserException((startIdx + 3) + "번째 자소가 한글 종성이 아닙니다");
@@ -153,7 +153,7 @@ public class HangulParser {
         return Character.toString((char) unicode);
     }
 
-    private int getNextAssembleSize(List<String> jasoList, final int startIdx) throws HangulParserException{
+    private int getNextAssembleSize(List<String> jasoList, final int startIdx) throws HangulParserException {
         final int remainJasoLength = jasoList.size() - startIdx;
         final int assembleSize;
 
