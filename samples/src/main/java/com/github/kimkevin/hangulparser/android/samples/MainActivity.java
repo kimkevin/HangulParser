@@ -14,6 +14,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
   private EditText inputEv;
+  private TextView unicodeTv;
   private TextView resultTv;
 
   @Override
@@ -22,12 +23,15 @@ public class MainActivity extends AppCompatActivity {
     setContentView(R.layout.activity_main);
 
     inputEv = (EditText) findViewById(R.id.input_edit);
-    resultTv = (TextView) findViewById(R.id.result_txt);
+    unicodeTv = (TextView) findViewById(R.id.unicode_txt);
+    resultTv = (TextView) findViewById(R.id.assembled_txt);
   }
 
   public void assemble(View v) {
     try {
       resultTv.setText(strListToString(HangulParser.getInstance().disassemble(inputEv.getText().toString())));
+
+      unicodeTv.setText(toStringWithUnicode(inputEv.getText().toString()));
     } catch (HangulParserException e) {
       e.printStackTrace();
 
@@ -43,5 +47,14 @@ public class MainActivity extends AppCompatActivity {
       if (i != strList.size() - 1) newStr += " , ";
     }
     return newStr;
+  }
+
+  public String toStringWithUnicode(String str) {
+    String result = "";
+    for (char character : str.toCharArray()) {
+      result += character + "(\\u" + String.format("%x", (int) character).toUpperCase() + ")";
+    }
+
+    return result;
   }
 }
