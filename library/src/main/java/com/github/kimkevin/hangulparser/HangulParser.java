@@ -5,10 +5,6 @@ import java.util.List;
 
 /**
  * HangulParser is to seperate Hangul to basic consonant and vowel by using Unicode
- *
- *
- * Created by KimKevin.
- * @since 0.1
  * @see HangulParserException
  *
  * ref : Hangul Syllables http://www.unicode.org/charts/PDF/UAC00.pdf
@@ -16,32 +12,17 @@ import java.util.List;
 
 public class HangulParser {
   private static final String TAG = HangulParser.class.getSimpleName();
-  private static HangulParser instance;
-
-  public static HangulParser getInstance() {
-    if (instance == null) {
-      synchronized (HangulParser.class) {
-        instance = new HangulParser();
-
-        JUNGSUNG_COUNT = JUNGSUNG_LIST.length;
-        JONGSUNG_COUNT = JONGSUNG_LIST.length;
-      }
-    }
-
-    return instance;
-  }
 
   // First '가' : 0xAC00(44032), 끝 '힟' : 0xD79F(55199)
   private static final int FIRST_HANGUL = 44032;
-
-  private static int JUNGSUNG_COUNT = 0;
-  private static int JONGSUNG_COUNT = 0;
 
   // 19 initial consonants
   private static final char[] CHOSUNG_LIST = {
       'ㄱ', 'ㄲ', 'ㄴ', 'ㄷ', 'ㄸ', 'ㄹ', 'ㅁ', 'ㅂ', 'ㅃ', 'ㅅ',
       'ㅆ', 'ㅇ', 'ㅈ', 'ㅉ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅍ', 'ㅎ'
   };
+
+  private static int JUNGSUNG_COUNT = 21;
 
   // 21 vowels
   private static final char[] JUNGSUNG_LIST = {
@@ -50,6 +31,8 @@ public class HangulParser {
       'ㅣ'
   };
 
+  private static int JONGSUNG_COUNT = 28;
+
   // 28 consonants placed under a vowel(plus one empty character)
   private static final char[] JONGSUNG_LIST = {
       ' ', 'ㄱ', 'ㄲ', 'ㄳ', 'ㄴ', 'ㄵ', 'ㄶ', 'ㄷ', 'ㄹ', 'ㄺ',
@@ -57,8 +40,8 @@ public class HangulParser {
       'ㅆ', 'ㅇ', 'ㅈ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅍ', 'ㅎ'
   };
 
-  public List<String> disassemble(char hangul) throws HangulParserException {
-    List<String> jasoList = new ArrayList<String>();
+  public static List<String> disassemble(char hangul) throws HangulParserException {
+    List<String> jasoList = new ArrayList<>();
 
     String hangulStr = String.valueOf(hangul);
 
@@ -86,7 +69,7 @@ public class HangulParser {
     return jasoList;
   }
 
-  public List<String> disassemble(String hangul) throws HangulParserException {
+  public static List<String> disassemble(String hangul) throws HangulParserException {
     List<String> jasoList = new ArrayList<String>();
 
     for (int i = 0, li = hangul.length(); i < li; i++) {
@@ -100,7 +83,7 @@ public class HangulParser {
     return jasoList;
   }
 
-  public String assemble(List<String> jasoList) throws HangulParserException {
+  public static String assemble(List<String> jasoList) throws HangulParserException {
     if (jasoList.size() > 0) {
       String result = "";
       int startIdx = 0;
@@ -121,7 +104,7 @@ public class HangulParser {
     }
   }
 
-  private String assemble(List<String> jasoList, final int startIdx, final int assembleSize) throws HangulParserException {
+  private static String assemble(List<String> jasoList, final int startIdx, final int assembleSize) throws HangulParserException {
     int unicode = FIRST_HANGUL;
 
     final int chosungIndex = new String(CHOSUNG_LIST).indexOf(jasoList.get(startIdx));
@@ -153,12 +136,12 @@ public class HangulParser {
     return Character.toString((char) unicode);
   }
 
-  private int getNextAssembleSize(List<String> jasoList, final int startIdx) throws HangulParserException {
+  private static int getNextAssembleSize(List<String> jasoList, final int startIdx) throws HangulParserException {
     final int remainJasoLength = jasoList.size() - startIdx;
     final int assembleSize;
 
-    if(remainJasoLength > 3) {
-      if(new String(JUNGSUNG_LIST).contains(jasoList.get(startIdx + 3))) {
+    if (remainJasoLength > 3) {
+      if (new String(JUNGSUNG_LIST).contains(jasoList.get(startIdx + 3))) {
         assembleSize = 2;
       } else {
         assembleSize = 3;

@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
   public void assemble(View v) {
     try {
-      resultTv.setText(strListToString(HangulParser.getInstance().disassemble(inputEv.getText().toString())));
+      resultTv.setText(strListToString(HangulParser.disassemble(inputEv.getText().toString())));
 
       unicodeTv.setText(toStringWithUnicode(inputEv.getText().toString()));
     } catch (HangulParserException e) {

@@ -14,7 +14,7 @@ public class HangulParserTest {
   @Test
   public void testAssemble() throws Exception {
     try {
-      List<String> jasoList = HangulParser.getInstance().disassemble('한');
+      List<String> jasoList = HangulParser.disassemble('한');
 
       assertList(Arrays.asList("ㅎ", "ㅏ", "ㄴ"), jasoList);
     } catch (HangulParserException e) {
@@ -34,7 +34,7 @@ public class HangulParserTest {
       jasoList.add("ㅡ");
       jasoList.add("ㄹ");
 
-      String hangul = HangulParser.getInstance().assemble(jasoList);
+      String hangul = HangulParser.assemble(jasoList);
       assertEquals("한글", hangul);
     } catch (HangulParserException e) {
       e.printStackTrace();

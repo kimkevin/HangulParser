@@ -8,10 +8,10 @@ import java.util.List;
 public class HangulParserMain {
   public static void main (String[] args) {
     try {
-      List<String> jasoList = HangulParser.getInstance().disassemble('한');
+      List<String> jasoList = HangulParser.disassemble('한');
       System.out.println(jasoList.toString());
 
-      jasoList = HangulParser.getInstance().disassemble("한글");
+      jasoList = HangulParser.disassemble("한글");
       System.out.println(jasoList.toString());
 
       jasoList.clear();
@@ -22,7 +22,7 @@ public class HangulParserMain {
       jasoList.add("ㅡ");
       jasoList.add("ㄹ");
 
-      String hangul = HangulParser.getInstance().assemble(jasoList);
+      String hangul = HangulParser.assemble(jasoList);
       System.out.println(hangul);
     } catch (HangulParserException e) {
       e.printStackTrace();
