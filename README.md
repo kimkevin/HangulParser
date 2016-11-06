@@ -5,6 +5,12 @@
 
 ## Usage
 
+```java
+dependencies {
+  compile 'com.github.kimkevin:hangulparser:1.0.0'
+}
+```
+
 **1. 자소 분리(Disassemble)**
 
 > public List\<String\> disassemble(char hangul)
@@ -31,7 +37,7 @@
   > [ㅎ, ㅏ, ㄴ, ㄱ, ㅡ, ㄹ]
 ```
 
-**2. 자소 결합(assemble)**
+**2. 자소 결합(Assemble)**
 > public String assemble(List\<String\> jasoList)
 
 ```java
@@ -49,29 +55,6 @@
   
   > 한글
 ```
-
-## Settings
-
-#### Android Studio
-
-프로젝트안의 라이브러리에 라이브러리 추가(클론)하기
-
-build.gradle
-```groovy
-  compile project(':your_library_folder:HangulParser')
-```
-
-settings.gradle
-```groovy
-  ':your_library_folder:HangulParser'
-```
- 
-#### Eclipse
-
-그래들 프로젝트로 ```HangulParser```를 추가하고 소스 폴더의 패스는 ```src/main/java```로 되어 있는것을 확인할 수 있고, 이를 활용하기 위해서 아래처럼 수정하기 (the Properties of library > Java Build Path > Projects)
-
-<img src="./screenshot/screenshot_set_library.jpg" width=557 height=280 />
-
 
 ## Contributing
 All contributions are welcome. Open a [Pull Requests](https://github.com/kimkevin/HangulToJasoParser/pulls) or refer to
