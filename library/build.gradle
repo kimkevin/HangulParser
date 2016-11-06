@@ -1,4 +1,14 @@
 apply plugin: 'java'
+apply plugin: 'com.novoda.bintray-release'
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.novoda:bintray-release:0.4.0'
+    }
+}
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
@@ -6,4 +16,15 @@ dependencies {
 
     sourceCompatibility = 1.7
     targetCompatibility = 1.7
+}
+
+publish {
+    userOrg = 'kimkevin'
+    groupId = 'com.github.kimkevin'
+    artifactId = 'hangulparser'
+    publishVersion = '1.0.0'
+    desc = '[Java & Android] HangulParser is to parse Hangul to Jaso(basic consonant and vowel) by using Unicode'
+    website = 'https://github.com/kimkevin/HangulParser'
+    issueTracker = 'https://github.com/kimkevin/HangulParser/issues'
+    repository = "https://github.com/kimkevin/HangulParser.git"
 }
