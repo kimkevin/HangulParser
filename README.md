@@ -3,13 +3,16 @@
 
 [Java & Android] `HangulParser` is to seperate hangul to basic consonant and vowel by using unicode and also to convert basic consonant and vowel to hangul.
 
-## Usage
+## Download
 
 ```java
 dependencies {
   compile 'com.github.kimkevin:hangulparser:1.0.0'
 }
 ```
+
+## Usage
+
 
 **1. 자소 분리(Disassemble)**
 
