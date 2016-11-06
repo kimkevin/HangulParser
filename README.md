@@ -7,7 +7,7 @@
 
 ```java
 repositories {
-	    jcenter()
+  jcenter()
 }
 
 dependencies {
