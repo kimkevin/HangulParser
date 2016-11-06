@@ -6,13 +6,16 @@
 ## Download
 
 ```java
+repositories {
+	    jcenter()
+}
+
 dependencies {
   compile 'com.github.kimkevin:hangulparser:1.0.0'
 }
 ```
 
 ## Usage
-
 
 **1. 자소 분리(Disassemble)**
 
